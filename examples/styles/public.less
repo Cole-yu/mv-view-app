@@ -1,0 +1,34 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: Arial, "San Francisco", Helvetica, "SimHei", "SimSun", sans-serif;
+    color: #333;
+    font-size: 0.24rem;
+}
+
+// 适配移动端的1px像素的底线
+// 使用方法：去除原先元素的border:1px solid #999,在该元素中添加此样式类；同理可自行添加border-top-1px...
+.bd__bottom {
+    position: relative;
+    &:before {
+        content: '-';
+        /*oppo vivo 部分手机线条不显示的兼容处理*/
+        color: transparent;
+        width: 100%;
+        height: 0;
+        box-sizing: border-box;
+        font-size: 0;
+        border-bottom: 1px solid #ededed;
+        -webkit-transform: scaleY(.5);
+        transform: scaleY(.5);
+        -webkit-transform-origin: left bottom;
+        transform-origin: left bottom;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+    }
+}

@@ -44,10 +44,10 @@ module.exports = {
     },
   },
   output: {
-    filename: '[name].min.js', // 'dzhsj-stockchart.umd.min.js',
+    filename: '[name].min.js', // 'mv-view-app.umd.min.js',
     path: rootResolve('lib'),
     // library: {
-    //   name: 'DzhsjStockChart',
+    //   name: 'MvViewApp',
     //   type: 'umd',
     //   umdNamedDefine: true,
     // },

@@ -1,6 +1,6 @@
 {
   "name": "mv-view-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "homepage": "https://github.com/Cole-yu/mv-view-app#readme",
   "repository": {
     "type": "git",
@@ -61,6 +61,7 @@
   },
   "sideEffects": [
     "dist/*",
-    "lib/style/*"
+    "lib/style/*",
+    "*.vue"
   ]
 }

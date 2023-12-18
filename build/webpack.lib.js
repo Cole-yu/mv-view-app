@@ -140,7 +140,7 @@ module.exports = {
       format: `:msg [:bar] ${chalk.green.bold(':percent')} (:elapsed s)`,
       clear: false
     }),
-    new webpack.BannerPlugin(banner)
+    // new webpack.BannerPlugin(banner)
   ],
   optimization: {
     usedExports: true, // tree sharking，与 package.json 的 sideEffects 配合使用

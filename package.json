@@ -1,6 +1,6 @@
 {
   "name": "mv-view-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/Cole-yu/mv-view-app#readme",
   "repository": {
     "type": "git",
@@ -58,5 +58,9 @@
   "config": {
     "host": "0.0.0.0",
     "port": 8080
-  }
+  },
+  "sideEffects": [
+    "dist/*",
+    "lib/style/*"
+  ]
 }

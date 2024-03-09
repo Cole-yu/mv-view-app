@@ -5,12 +5,12 @@
  * @param {Number} wait 等待时间
  * @param {Boolean} immediate 是否立即执行一次
  */
-function debounce(func, wait, immediate) {
+ function debounce(func = () => { }, wait = 15, immediate = false) {
     let timeout;
-    return function () {
+    return () => {
         let context = this;
         let args = arguments;
-        let later = function () {
+        let later = () => {
             timeout = null;
             if (!immediate) {
                 func.apply(context, args);
@@ -33,7 +33,7 @@ function debounce(func, wait, immediate) {
  * @param {Number} wait 等待多少ms后可以再次执行函数
  * @param {Number} mustRun 多少ms内至少执行一次，mustRun > wait
  */
-function throttle(func, wait, mustRun) {
+function throttle(func = () => { }, wait = 200, mustRun = 1000) {
     let timeout;
     let startTime = new Date();
     return function () {

@@ -1,8 +1,12 @@
 import MvScrollList from './components/mv-scroll-list';
+import MvEllipsis from './components/mv-ellipsis';
+import MvSkeleton from './components/mv-skeleton';
 import StockUtils from './utils/stockUtils';
 
 const components = [
   MvScrollList,
+  MvEllipsis,
+  MvSkeleton,
 ];
 
 // 定义 install 方法

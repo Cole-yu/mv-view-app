@@ -3,6 +3,7 @@ import Router from 'vue-router';
 const PageMvScrollList = () => import(/* webpackChunkName: "PageMvScrollList" */'@/views/page-mv-scroll-list');
 const PageMvEllipsis = () => import(/* webpackChunkName: "PageMvEllipsis" */'@/views/page-mv-ellipsis');
 const PageMvSkeleton = () => import(/* webpackChunkName: "PageMvSkeleton" */'@/views/page-mv-skeleton');
+const PageMvScrollBounce = () => import(/* webpackChunkName: "PageMvScrollBounce" */'@/views/page-mv-scroll-bounce');
 
 Vue.use(Router)
 
@@ -32,6 +33,11 @@ export default new Router({
       path: '/mv-skeleton', // 骨架屏
       name: "MvSkeleton",
       component: PageMvSkeleton,
+    },
+    {
+      path: '/mv-scroll-bounce', // 滚动回弹效果
+      name: "MvScrollBounce",
+      component: PageMvScrollBounce,
     },
   ]
 })

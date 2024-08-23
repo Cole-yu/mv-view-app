@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin'); 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
@@ -15,7 +15,7 @@ module.exports = {
     alias: {
       '@': rootResolve('examples')
     }
-  }, 
+  },
   entry: {
     main: rootResolve('examples/main.js'),
   },
@@ -79,12 +79,12 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
-        generator:{
+        generator: {
           filename: 'images/[name].[contenthash][ext]'
         },
-        parser:{
+        parser: {
           dataUrlCondition: {
-            maxSize: 20*1024 // 操过20kb就使用图片资源，小于20kb就使用base64编码
+            maxSize: 20 * 1024 // 操过20kb就使用图片资源，小于20kb就使用base64编码
           }
         }
       },
@@ -168,8 +168,8 @@ module.exports = {
     // runtimeChunk: 'single',
     splitChunks: {
       // 实际拆分条件优先级： maxSize < minSize
-      minSize: 20*1024, // 限制拆分包的最小值，达到这个值，才能够拆出新包
-      maxSize: 50*1024, // 单位:字节 约等于40kb，生成的块大于40KB的chunk将拆分成较小部分，增加请求数量以实现更好的缓存
+      minSize: 20 * 1024, // 限制拆分包的最小值，达到这个值，才能够拆出新包
+      maxSize: 50 * 1024, // 单位:字节 约等于40kb，生成的块大于40KB的chunk将拆分成较小部分，增加请求数量以实现更好的缓存
       minChunks: 1, // 引入次数大于等于该值时，才会进行分包
       cacheGroups: {
         vendor: {
@@ -188,7 +188,7 @@ module.exports = {
     // 生成文件的最大体积 整数类型（以字节为单位 300k）
     maxAssetSize: 1000000,
     // 只给出 js/css 文件的性能提示
-    assetFilter: function(assetFilename) {
+    assetFilter: function (assetFilename) {
       return assetFilename.endsWith('.css') || assetFilename.endsWith('.js');
     }
   },

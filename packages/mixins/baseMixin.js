@@ -16,6 +16,7 @@ export default {
     formatRatio: stockUtils.formatRatio,
     formatColor: stockUtils.formatColor,
     getStockType: stockUtils.getStockType,
+    formatDate: stockUtils.formatDate,
   },
 
   methods: {

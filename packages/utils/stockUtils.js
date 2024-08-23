@@ -287,6 +287,12 @@ const getStockType = function getStockType(value) {
 };
 
 function formatDate(time, format) {
+  if (!time) {
+    return;
+  }
+  if (time instanceof Date) {
+    time = time.getTime();
+  }
   const date = new Date(time);
   const o = {
     'M+': date.getMonth() + 1,

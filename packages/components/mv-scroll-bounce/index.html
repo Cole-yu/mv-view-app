@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>滚动回弹</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    #box {
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .item {
+      height: 8vh;
+      line-height: 8vh;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .tip {
+      height: 8vh;
+      line-height: 8vh;
+      text-align: center;
+      background-color: #ddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div id="content">
+      <div class="tip">pulldown ↓</div>
+      <ul>
+        <li class="item">0</li>
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+        <li class="item">5</li>
+        <li class="item">6</li>
+        <li class="item">7</li>
+        <li class="item">8</li>
+        <li class="item">9</li>
+        <li class="item">10</li>
+        <li class="item">11</li>
+        <li class="item">12</li>
+        <li class="item">13</li>
+        <li class="item">14</li>
+        <li class="item">15</li>
+        <li class="item">16</li>
+        <li class="item">17</li>
+        <li class="item">18</li>
+        <li class="item">19</li>
+      </ul>
+      <div class="tip">pullup ↑</div>
+    </div>
+  </div>
+
+  <script>
+    const box = document.getElementById("box");
+    const content = document.getElementById("content");
+
+    let startY = 0,
+      lastY = 0,
+      diffY = 0;
+
+    const maxTranslateY = content.clientHeight - box.clientHeight;
+    const buffer = Math.floor(window.innerHeight / 10); // 667 / 10 = 66 最大回弹高度
+
+    content.addEventListener("touchstart", (e) => {
+      startY = e.touches[0].clientY;
+    });
+
+    content.addEventListener("touchmove", (e) => {
+      const currentY = e.touches[0].clientY;
+      diffY = Math.floor(currentY - startY);
+      console.log("diffY", diffY);
+
+      // 手指从上向下滑动，页面向上滚动
+      if (diffY > 0) {
+        // 滚动到顶了
+        if (lastY + diffY > buffer) {
+          diffY = buffer - lastY;
+        }
+      }
+
+      // 手指从下向上滑动，滚动条向下滚动
+      if (diffY < 0) {
+        // 滚动到底了
+        if (lastY + diffY < -(maxTranslateY + buffer)) {
+          diffY = -(maxTranslateY + buffer) - lastY;
+        }
+      }
+
+
+      console.log("滚动时值", lastY + diffY);
+      content.style.transform = `translateY(${lastY + diffY}px)`;
+      content.style.transition = "";
+    });
+
+    content.addEventListener("touchend", (e) => {
+      if (diffY > 0) {
+        if (lastY + diffY > 0) {
+          lastY = 0;
+          content.style.transform = "translateY(0px)";
+          content.style.transition = "all .3s ease-out";
+          return;
+        }
+      }
+
+      if (diffY < 0) {
+        if (lastY + diffY < -maxTranslateY) {
+          lastY = -maxTranslateY;
+          content.style.transform = `translateY(${-maxTranslateY}px)`;
+          content.style.transition = "all .3s ease-out";
+          return;
+        }
+      }
+
+      console.log("上一次lastY", lastY);
+      lastY = lastY + diffY;
+      console.log("本次lastY", lastY);
+      content.style.transform = `translateY(${lastY}px)`;
+      content.style.transition = "all .3s ease-out";
+    });
+  </script>
+</body>
+
+</html>

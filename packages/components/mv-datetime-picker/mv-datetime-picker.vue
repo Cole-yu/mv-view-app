@@ -170,19 +170,24 @@ export default {
     },
     // 年份滚动事件
     yearScrollEndHandle(index) {
-      // 月份置顶
-      this.$refs.MonthMvScrollBounceRef.scrollTo(0);
-      this.$refs.DayMvScrollBounceRef.scrollTo(0);
       this.yearActiveIndex = index;
+
+      // 月份置顶
       this.monthActiveIndex = 0;
+      this.$refs.MonthMvScrollBounceRef.scrollTo(0);
+      this.$refs.MonthMvScrollBounceRef.refresh();
+
       this.dayActiveIndex = 0;
+      this.$refs.DayMvScrollBounceRef.scrollTo(0);
+      this.$refs.DayMvScrollBounceRef.refresh();
     },
     // 月份滚动事件
     monthScrollEndHandle(index) {
-      // 日期置顶
-      this.$refs.DayMvScrollBounceRef.scrollTo(0);
       this.monthActiveIndex = index;
+      // 日期置顶
       this.dayActiveIndex = 0;
+      this.$refs.DayMvScrollBounceRef.scrollTo(0);
+      this.$refs.DayMvScrollBounceRef.refresh();
     },
     // 日期滚动
     dayScrollEndHandle(index) {

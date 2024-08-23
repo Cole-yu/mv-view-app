@@ -142,6 +142,18 @@ export default {
         this.$refs.MvScrollBounceContentRef.style.transition = `all ${time}s ${easing}`;
       }
     },
+    // Dom结构发生改变，强制刷新
+    refresh() {
+      // console.log("refresh 前", this.maxTranslateY);
+      this.$forceUpdate();
+      this.$nextTick(() => {
+        this.maxTranslateY =
+          this.$refs.MvScrollBounceContentRef.clientHeight -
+          this.$refs.MvScrollBounceWrapRef.clientHeight;
+
+        // console.log("refresh 后", this.maxTranslateY);
+      });
+    },
   },
   mounted() {
     this.maxTranslateY =

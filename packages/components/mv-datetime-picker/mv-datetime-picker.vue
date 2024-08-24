@@ -166,6 +166,7 @@ export default {
       console.log(year, month, day);
 
       this.$emit("confirmEmit", new Date(year, month, day));
+      this.$emit("update:filterdate", new Date(year, month, day));
       this.showPickerFlag = false;
     },
     // 年份滚动事件

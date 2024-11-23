@@ -4,7 +4,8 @@ const PageMvScrollList = () => import(/* webpackChunkName: "PageMvScrollList" */
 const PageMvEllipsis = () => import(/* webpackChunkName: "PageMvEllipsis" */'@/views/page-mv-ellipsis');
 const PageMvSkeleton = () => import(/* webpackChunkName: "PageMvSkeleton" */'@/views/page-mv-skeleton');
 const PageMvScrollBounce = () => import(/* webpackChunkName: "PageMvScrollBounce" */'@/views/page-mv-scroll-bounce');
-const MvDatetimePicker = () => import(/* webpackChunkName: "MvDatetimePicker" */'@/views/page-mv-datetime-picker');
+const PageMvDatetimePicker = () => import(/* webpackChunkName: "PageMvDatetimePicker" */'@/views/page-mv-datetime-picker');
+const PageMvReactiveTxt = () => import(/* webpackChunkName: "PageMvReactiveTxt" */'@/views/page-mv-reactive-txt');
 
 Vue.use(Router)
 
@@ -43,7 +44,12 @@ export default new Router({
     {
       path: '/mv-datetime-picker', // 移动端日历选择器
       name: "MvDatetimePicker",
-      component: MvDatetimePicker,
+      component: PageMvDatetimePicker,
+    },
+    {
+      path: '/mv-reactive-txt', // 自适应大小变化文本
+      name: "MvReactiveTxt",
+      component: PageMvReactiveTxt,
     },
   ]
-})
+});

@@ -3,6 +3,7 @@ import MvEllipsis from './components/mv-ellipsis';
 import MvSkeleton from './components/mv-skeleton';
 import MvScrollBounce from './components/mv-scroll-bounce';
 import MvDatetimePicker from './components/mv-datetime-picker';
+import MvReactiveTxt from './components/mv-reactive-txt';
 import StockUtils from './utils/stockUtils';
 
 const components = [
@@ -11,6 +12,7 @@ const components = [
   MvSkeleton,
   MvScrollBounce,
   MvDatetimePicker,
+  MvReactiveTxt,
 ];
 
 // 定义 install 方法

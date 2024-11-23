@@ -100,7 +100,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: '大智慧申久常用组件', // html 中取值 <title><%= htmlWebpackPlugin.options.title %></title>
+      title: '前端常用组件', // html 中取值 <title><%= htmlWebpackPlugin.options.title %></title>
       template: rootResolve("public/index.html"), // 指定html模板文件
       inject: 'body',
       // hash: true, // 在引入JS时增加hash后缀字符串，去除缓存 bundle.js?a251...2ce5 

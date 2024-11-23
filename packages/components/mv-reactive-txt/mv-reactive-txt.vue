@@ -1,15 +1,34 @@
 <template>
-  <div
-    class="mv-reactive-txt"
-    ref="ReactiveTxtContainerRef"
-    :class="{ nowrap: nowrapFlag }"
-  >
-    <span
-      class="mv-reactive-content"
-      :style="{ 'font-size': fontSize + 'px' }"
-      ref="txtRef"
-      >{{ text }}</span
+  <div class="mv-reactive-txt" ref="ReactiveTxtContainerRef">
+    <!-- 改变字体大小模式，12px以上时有效 -->
+    <div
+      v-if="!transformFlag"
+      class="reactive-content-wrap"
+      :class="{
+        left: textAlign == 'left',
+        center: textAlign == 'center',
+        right: textAlign == 'right',
+      }"
     >
+      <span :style="{ 'font-size': fontSize + 'px' }" ref="txtRef">{{
+        text
+      }}</span>
+    </div>
+
+    <!-- 10px transform 缩放模式 -->
+    <div
+      v-else
+      class="transform-scale-wrap"
+      :class="{
+        left: textAlign == 'left',
+        center: textAlign == 'center',
+        right: textAlign == 'right',
+      }"
+    >
+      <span class="transform-scale">
+        {{ text }}
+      </span>
+    </div>
   </div>
 </template>
 
@@ -27,6 +46,10 @@ export default {
       type: Number,
       default: 16, // px
     },
+    textAlign: {
+      type: String,
+      default: "center", // left、center、right
+    },
   },
   computed: {
     fontSize() {
@@ -35,11 +58,11 @@ export default {
   },
   data() {
     return {
-      // text: "锦富技术东方精工太辰光哈森股份",
+      // text: "华泰柏瑞中证A500ETF联接C",
       mode: 0,
       containerWidth: 0,
       txtWidth: 0,
-      nowrapFlag: true,
+      transformFlag: false, // 是否为 transform 缩放模式标记
     };
   },
   created() {},
@@ -61,7 +84,7 @@ export default {
         this.reactive();
       } else {
         if (this.fontSize <= 12 && this.containerWidth < this.txtWidth) {
-          this.nowrapFlag = false;
+          this.transformFlag = true;
         }
         return;
       }
@@ -74,11 +97,39 @@ export default {
 .mv-reactive-txt {
   width: 100%;
   height: 100%;
-  .mv-reactive-content {
-    position: relative;
-  }
-}
-.nowrap {
   white-space: nowrap;
+  .reactive-content-wrap {
+    display: flex;
+    align-items: center;
+  }
+  .transform-scale-wrap {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    .transform-scale {
+      display: inline-block;
+      font-size: 20px;
+      transform: scale(0.5);
+      // transform-origin: center center;
+    }
+  }
+  .left {
+    justify-content: flex-start;
+    .transform-scale {
+      transform-origin: left center;
+    }
+  }
+  .center {
+    justify-content: center;
+    .transform-scale {
+      transform-origin: center center;
+    }
+  }
+  .right {
+    justify-content: flex-end;
+    .transform-scale {
+      transform-origin: right center;
+    }
+  }
 }
 </style>

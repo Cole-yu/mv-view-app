@@ -1,9 +1,16 @@
 <template>
   <div class="page-wrap">
     <p class="demo-title">MvReactiveTxt 组件演示：</p>
-    <div class="mv-reactive-txt-container">
-      <mv-reactive-txt :text="stockName" :initFontSize="32" />
-    </div>
+    <section class="demo-content-wrap">
+      <div class="mv-reactive-txt-container">
+        <mv-reactive-txt
+          :text="stockName"
+          :initFontSize="initFontSize"
+          :textAlign="textAlign"
+        />
+      </div>
+      <span class="code">SH600000</span>
+    </section>
   </div>
 </template>
 
@@ -12,7 +19,9 @@ export default {
   name: "PageMvReactiveTxt",
   data() {
     return {
-      stockName: "华泰柏瑞中证A500ETF联接C",
+      stockName: "华泰柏瑞中证A500ETF",
+      initFontSize: 32,
+      textAlign: "left",
     };
   },
 };
@@ -30,14 +39,23 @@ export default {
     font-size: 0.36rem;
     font-weight: 600;
   }
-  .mv-reactive-txt-container {
-    width: 2rem;
-    height: 4rem;
-    color: #333;
-    font-family: "PingFang SC";
-    font-weight: 600;
-    border: 1px dashed #ddd;
-    margin: 0.32rem auto;
+  .demo-content-wrap {
+    margin-top: 0.32rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .mv-reactive-txt-container {
+      display: inline-block;
+      width: 2rem;
+      // height: 4rem;
+      border: 1px dashed #ddd;
+      color: #333;
+      font-family: "PingFang SC";
+      font-weight: 600;
+    }
+    .code {
+      margin-left: 0.32rem;
+    }
   }
 }
 </style>

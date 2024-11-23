@@ -10,3 +10,4 @@
 | :------: | :----: | :----: | :--: |
 | text | 组件中应用的文本 | String | '' |
 | initFontSize | 初始字体大小 | Number | 16(单位: px) |
+| textAlign | 水平方向对齐方式 | String | center |

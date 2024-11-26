@@ -97,6 +97,9 @@ export default {
 .mv-reactive-txt {
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   white-space: nowrap;
   .reactive-content-wrap {
     display: flex;

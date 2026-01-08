@@ -6,6 +6,7 @@ const PageMvSkeleton = () => import(/* webpackChunkName: "PageMvSkeleton" */'@/v
 const PageMvScrollBounce = () => import(/* webpackChunkName: "PageMvScrollBounce" */'@/views/page-mv-scroll-bounce');
 const PageMvDatetimePicker = () => import(/* webpackChunkName: "PageMvDatetimePicker" */'@/views/page-mv-datetime-picker');
 const PageMvReactiveTxt = () => import(/* webpackChunkName: "PageMvReactiveTxt" */'@/views/page-mv-reactive-txt');
+const PageMvDialog = () => import(/* webpackChunkName: "PageMvDialog" */'@/views/page-mv-dialog');
 
 Vue.use(Router)
 
@@ -50,6 +51,11 @@ export default new Router({
       path: '/mv-reactive-txt', // 自适应大小变化文本
       name: "MvReactiveTxt",
       component: PageMvReactiveTxt,
+    },
+    {
+      path: '/mv-dialog', // 命令式弹窗
+      name: "MvDialog",
+      component: PageMvDialog,
     },
   ]
 });

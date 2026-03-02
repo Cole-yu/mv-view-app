@@ -8,6 +8,7 @@ import '@/styles/public.less';
 // 项目内直接引入
 import MvViewApp from '../packages/index';
 import MvDialog from '../packages/components/mv-dialog';
+import MvKeyboard from '../packages/components/mv-keyboard';
 
 // 编译版本模式引入
 // import MvViewApp from '../lib/mv-view-app.umd.min.js';
@@ -16,6 +17,7 @@ import MvDialog from '../packages/components/mv-dialog';
 // 注册组件库
 Vue.use(MvViewApp);
 Vue.use(MvDialog);
+Vue.use(MvKeyboard);
 
 Vue.config.productionTip = false;
 

@@ -69,12 +69,18 @@ export default {
     keyPress($event, keyVal) {
       $event.stopPropagation();
       console.log("keyVal", keyVal);
-      this.input = this.input + keyVal; // 字符串拼接
-      this.onInput(this.input);
+      let tamp = `${this.input}${keyVal}`; // 字符串拼接
+      let reg = new RegExp(/^\d+(\.\d*)?$/); // 数字合法性校验
+      if (reg.test(tamp)) {
+        this.input = tamp;
+        this.onInput(this.input);
+      } else {
+        console.log("不规范的数字", tamp);
+      }
     },
     onDelete($event) {
       $event.stopPropagation();
-      this.input = this.input.slice(0, -1);
+      this.input = `${this.input}`.slice(0, -1);
       this.onInput(this.input);
     },
     onClear($event) {

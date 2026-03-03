@@ -3,17 +3,13 @@
 #### data
 | 属性 | 说明 | 类型 | 默认值 |
 | :------: | :----: | :----: | :--: |
-| input | 绑定的输入值 | String | 空 |
+| target | 父组件上绑定的data对象 | String | "input" |
 | extraKey | 配置多个按键 | Array | ["00", "."] |
-| onInput | 接收回调值 | Function | (input) => { vm.input = input.length > 0 ? Number(input) : ""; } |
 
 #### 使用示例
 ```
 this.$keyboard({
-    input: this.input,
-    onInput: (input) => {
-      vm.input = input.length > 0 ? Number(input) : "";
-    }
+    target: "input", // 绑定到 this.input
   }).then((action) => {
     console.log("action", action);
     if (action == "confirm") {

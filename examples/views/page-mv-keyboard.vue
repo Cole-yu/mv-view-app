@@ -4,9 +4,20 @@
       class="mv-page-keyboard-input"
       type="text"
       readonly
-      v-model="input"
-      @focus="openKeyboard"
+      v-model="price"
+      @focus="price_openKeyboard"
       placeholder="请输入买入价。"
+    />
+
+    <br />
+
+    <input
+      class="mv-page-keyboard-input"
+      type="text"
+      readonly
+      v-model="quantity"
+      @focus="quantity_openKeyboard"
+      placeholder="请输入买入数量。"
     />
   </div>
 </template>
@@ -16,14 +27,31 @@ export default {
   name: "PageMvKeyboard",
   data() {
     return {
-      input: "",
+      price: "",
+      quantity: "",
     };
   },
   methods: {
-    openKeyboard($event) {
+    price_openKeyboard($event) {
       $event.preventDefault();
 
       this.$keyboard({
+        target: "price", // 绑定到 this.price
+      }).then((action) => {
+        console.log("action", action);
+        if (action == "confirm") {
+          return;
+        }
+        if (action == "cancel") {
+          return;
+        }
+      });
+    },
+    quantity_openKeyboard($event) {
+      $event.preventDefault();
+
+      this.$keyboard({
+        target: "quantity", // 绑定到 this.quantity
         extraKey: ["000", "00"],
       }).then((action) => {
         console.log("action", action);
@@ -48,6 +76,7 @@ export default {
   font-size: 0.24rem;
   line-height: 0.32rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   .mv-page-keyboard-input {

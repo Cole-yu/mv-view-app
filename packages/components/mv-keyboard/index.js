@@ -17,11 +17,13 @@ let init = (options) => {
 
 // 注: 此处不能使用箭头函数，否则 this = undefined
 let caller = function (options = {}) {
-  const vm = this; // this 父组件实例对象
+  const vm = this; // this 调用者父组件实例对象
   options = Object.assign({
-    input: `${vm.input}`,
+    target: "input", // 默认绑定到 this.input
+    input: `${vm[options.target]}`,
     onInput: (input) => {
-      vm.input = input.length > 0 ? Number(input) : "";
+      // vm[options.target] = input.length > 0 ? Number(input) : "";
+      vm[options.target] = input;
     },
   }, options);
 

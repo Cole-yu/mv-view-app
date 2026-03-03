@@ -23,7 +23,9 @@ export default {
     openKeyboard($event) {
       $event.preventDefault();
 
-      this.$keyboard().then((action) => {
+      this.$keyboard({
+        extraKey: ["000", "00"],
+      }).then((action) => {
         console.log("action", action);
         if (action == "confirm") {
           return;

@@ -1,5 +1,5 @@
 <template>
-  <div class="mv-keyboard-wrap" @click="cancel">
+  <div class="mv-keyboard-wrap" @click="cancel" v-show="showFlag">
     <div class="mv-keyboard-container">
       <div class="mv-keyboard-body-left">
         <div
@@ -41,6 +41,13 @@
 </template>
 
 <script>
+// 抽离组件的原始默认配置
+const DEFAULT_DATA_CONFIG = {
+  input: "",
+  clearText: "清空",
+  confirmText: "完成",
+  showFlag: false,
+};
 export default {
   name: "MvKeyboard",
   props: {
@@ -57,10 +64,16 @@ export default {
   },
   data() {
     return {
-      input: "",
-      clearText: "清空",
-      confirmText: "完成",
+      // input: "",
+      // clearText: "清空",
+      // confirmText: "完成",
+      // showFlag: false,
+      ...DEFAULT_DATA_CONFIG,
+      innerExtraKey: [],
     };
+  },
+  created() {
+    this.innerExtraKey = [...this.extraKey];
   },
   methods: {
     onInput(input) {
@@ -88,8 +101,20 @@ export default {
       this.input = "";
       this.onInput(this.input);
     },
-    show(cb) {
-      typeof cb === "function" && cb.call(this, this);
+    // show(cb) {
+    show(options) {
+      // 重置原始配置及合并配置选项
+      Object.assign(
+        this,
+        {
+          ...DEFAULT_DATA_CONFIG,
+          extraKey: this.innerExtraKey,
+        },
+        options
+      );
+
+      this.showFlag = true;
+      // typeof cb === "function" && cb.call(this, this);
       return new Promise((resolve) => {
         this.resolve = resolve;
       });
@@ -103,11 +128,11 @@ export default {
       this.hide();
     },
     hide() {
-      document.body.removeChild(this.$el);
-      this.$destroy();
+      this.showFlag = false;
+      // document.body.removeChild(this.$el);
+      // this.$destroy();
     },
   },
-  created() {},
 };
 </script>
 

@@ -7,11 +7,13 @@ let newInstance = null;
 let KeyboardConstructor = Vue.extend(keyboard);
 
 let init = (options) => {
-  //实例化组件
+  // 实例化组件
   newInstance = new KeyboardConstructor();
-  //合并配置选项
-  Object.assign(newInstance, options);
-  //使用$mount()后  可以理解为创建虚拟的dom
+
+  // 合并配置选项
+  // Object.assign(newInstance, options);
+
+  // 使用$mount()后  可以理解为创建虚拟的dom
   document.body.appendChild(newInstance.$mount().$el);
 }
 
@@ -27,11 +29,12 @@ let caller = function (options = {}) {
     },
   }, options);
 
-  //options 为调用组件方法时传入的配置选项
+  // options 为调用组件方法时传入的配置选项
   if (!newInstance) {
     init(options);
   }
-  return newInstance.show(vm => { newInstance = null });
+  // return newInstance.show(vm => { newInstance = null });
+  return newInstance.show(options);
 }
 
 export default {

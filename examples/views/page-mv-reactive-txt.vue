@@ -21,7 +21,7 @@ export default {
     return {
       stockName: "华泰柏瑞中证A500ETF",
       initFontSize: 32,
-      textAlign: "left",
+      textAlign: "center",
     };
   },
 };
